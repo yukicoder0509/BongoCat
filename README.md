@@ -1,5 +1,9 @@
 # Bongo Cat - Typing Companion (for Mac)
+Inspired by Steam game: Bongo Cat https://store.steampowered.com/app/3419430/Bongo_Cat/
 
+But it only support windows QQ
+
+So I make my own one (ﾉ>ω<)ﾉ
 ## Features: A cute cat that types with you!
 <img width="498" height="306" alt="LeftHandDown" src="https://github.com/user-attachments/assets/eeec1031-8ebc-4c9f-88e8-43ff73663785" />
 
