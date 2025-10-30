@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSInputMonitoringUsageDescription</key>
+	<string>需要全域鍵盤監控來讓貓咪跟著你打字喵～</string>
+	<key>Privacy - Input Monitoring Usage Description</key>
+	<string>This app requires input monitoring to detect global keyboard events</string>
+	<key>NSApplicationSupportsSecureRestorableState</key>
+	<true/>
+</dict>
+</plist>
