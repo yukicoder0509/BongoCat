@@ -24,18 +24,16 @@ struct BongoCatTypingApp: App {
 // App Delegate to configure window properties
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Configure app to not show in dock (optional)
-        NSApp.setActivationPolicy(.accessory)
-        
-        // Configure windows after slight delay to ensure they're created
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.configureWindows()
-        }
-        
-        // Let the window be recognize as a normal window
         NSApp.setActivationPolicy(.regular)
         NSApp.activate(ignoringOtherApps: true)
 
+        NotificationCenter.default.addObserver(
+            forName: NSWindow.didBecomeKeyNotification,
+            object: nil, queue: .main
+        ) { [weak self] note in
+            guard let window = note.object as? NSWindow else { return }
+            self?.configureWindows()
+        }
     }
     
     private func configureWindows() {
@@ -56,11 +54,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.standardWindowButton(.zoomButton)?.isHidden = true
             
             // Position window (e.g., bottom right)
-            if let screenFrame = NSScreen.main?.visibleFrame {
-                let windowFrame = window.frame
-                let x = screenFrame.width - windowFrame.width - 20
-                let y = 100
-                window.setFrameOrigin(NSMakePoint(CGFloat(x),CGFloat(y)))
+            if let vf = NSScreen.main?.visibleFrame {
+                let x = vf.maxX - window.frame.width - 20
+                let y = vf.minY + 50
+                window.setFrameOrigin(NSPoint(x: x, y: y))
             }
             
             // Allow clicking through parts of the window (if needed)
